@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现MVVM的js库（模拟vue实现功能）</title>
+    <script src="./MVVM.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model="person.name">
+        <p>
+            hello,{{person.name}}
+        </p>
+        <p>You are：{{person.age}}</p>
+        <!-- computed属性如果数据不变化 视图不更新 -->
+        <p>{{getNewName}}</p>
+<button type="button" name="button" v-on:click="testToggle">修改名字</button>
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                person: {
+                    name: 'lee',
+                    age: 18
+                }
+            },
+            methods: {
+                testToggle(){
+                    this.person.name = '修改后的名字：哈哈';
+                }
+            },
+            computed: {
+                getNewName(){
+                    return this.person.name+' 是要成为海贼王的人'
+                }
+            },
+        })
+    </script>
+</body>
+</html>
